@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from urllib3.util.url import Url
 
 import os.path
@@ -35,12 +36,20 @@ class StoryLineTooter:
         return response.status_code
 
 
+def process_commandline_arguments():
+    parser = ArgumentParser()
+    parser.add_argument("token", help="server access token")
+    return parser.parse_args()
+
+
 def main():
+    args = process_commandline_arguments()
     tooter = StoryLineTooter(
         db_dir="db",
         db_name="bartleby.db",
         hostname="hachyderm.io",
-        token="lFT_SB0gK_Rj7GnYDB3UBKEBM6j9Uf1sTy7z1U7VCW4",
+        # this should be secret!
+        token=args.token,
     )
 
     status_code = tooter.toot()
