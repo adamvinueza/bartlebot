@@ -28,7 +28,7 @@ def clean_text(text_path: str) -> str:
 def tokenize_story(text: str) -> list[tuple[int, str]]:
     """ Tokenize text into sentences, returns tuples of indices and lines."""
     tokens = nltk.sent_tokenize(text)
-    return [(idx, elem) for idx, elem in enumerate(tokens)]
+    return [(idx + 1, elem) for idx, elem in enumerate(tokens)]
 
 
 def create_lines_table(connection: sqlite3.Connection) -> None:
