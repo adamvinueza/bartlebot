@@ -20,13 +20,7 @@ jobs:
         cache: 'pip'
     - name: Install dependencies
       run: |
-        poetry install
-    - name: Build package
-      run: |
-        poetry build --format wheel
-    - name: Install package
-      run: |
-        poetry run pip install dist/*.whl
+        pip install -r requirements.txt
     - name: Toot random line from database
       run: |-
-        post-bartleby-line
+        python bartlebot.post
