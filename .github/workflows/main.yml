@@ -3,7 +3,7 @@ name: Toot
 on:
   workflow_dispatch:
   schedule:
-  - cron: '0 14,16,18,20 * * *'
+  - cron: '0 14 * * *'
 
 jobs:
   scheduled:
