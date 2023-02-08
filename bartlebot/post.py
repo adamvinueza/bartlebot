@@ -25,8 +25,10 @@ class StoryLineTooter:
         return c.fetchone()[0]
 
     def toot(self) -> int:
+        text = self.get_story_line()
+        status = '\n\n'.join([text, "#hachybots"])
         data = {
-            "status": self.get_story_line(),
+            "status": status,
             "visibility": "public"
         }
         response = requests.post(
